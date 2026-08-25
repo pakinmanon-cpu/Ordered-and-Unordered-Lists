@@ -40,28 +40,38 @@ class OrderedList:
         return "[" + ", ".join(elements) + "]"
 
     def add(self, item):
-        """
-        TODO: ภารกิจที่ 1
-        เพิ่มข้อมูลใหม่ โดยต้องรักษาลำดับจากน้อยไปมาก
-        *คำใบ้: ต้องใช้ previous และ current เพื่อหาตำแหน่งแทรก*
-        """
-        # --- เริ่มเขียนโค้ดตรงนี้ ---
-        
-        pass
-        
-        # --- สิ้นสุดการเขียนโค้ด ---
+         current - self.head
+         previous = None 
+         stop = False
+
+        while current is not None and not stop:
+            if current._data > item:
+                stop = True
+            else:
+                previous = current
+                current = current.next
+
+        temp = Node(item)
+        if previous is None:
+            temp.next = self.head
+            self.head = temp
+        else:
+            temp.next = current
+            previous.next = temp
 
     def search(self, item):
-        """
-        TODO: ภารกิจที่ 2
-        ค้นหาข้อมูล ถ้าเจอคืนค่า True ถ้าไม่เจอคืนค่า False
-        *บังคับ: ต้องหยุดลูปทันทีเมื่อทราบแน่ชัดว่าไม่มีข้อมูล (Early Exit)*
-        """
-        # --- เริ่มเขียนโค้ดตรงนี้ ---
-        
-        pass
-        
-        # --- สิ้นสุดการเขียนโค้ด ---
+        current = self.head
+
+         while current is not None:
+            if current.data == item:
+                return True
+
+            if current.data > item:
+                return False
+                
+        current = current.next
+
+        return False
 
 
 def run_tests_lab2():
